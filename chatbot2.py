@@ -113,4 +113,8 @@ with gr.Blocks() as demo:
     # Bind function to button
     submit_button.click(fn=get_answer, inputs=query_input, outputs=response_output)
 
-demo.launch(debug=True, share=True)
+# Get the PORT from environment variables (default to 8080 if not set)
+port = int(os.environ.get("PORT", 8080))
+
+# Launch the Gradio app with correct server settings
+demo.launch(server_name="0.0.0.0", server_port=port)
